@@ -8,6 +8,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.junit.Test;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -58,5 +59,20 @@ public class WikipediaStepDefinitions {
 
 
         Assert.assertEquals(expectedTitle,actualImageTitle);
+    }
+
+
+    @When("user searches for {string}")
+    public void userSearchesFor(String name) {
+        wikipediaPage.searchField.sendKeys(name);
+        //wikipediaPage.searchButton.click();
+    }
+
+    @Then("user should see {string} on the main header")
+    public void userShouldSeeOnTheMainHeader(String name) {
+        String actualTitle= wikipediaPage.headerTitle.getText();
+        String expectedTitle = name;
+
+        Assert.assertEquals("Title does not match",expectedTitle,actualTitle);
     }
 }

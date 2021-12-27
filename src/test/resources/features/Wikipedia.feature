@@ -12,9 +12,15 @@ Feature: Wikipedia Search Feature
     And user clicks search button
     Then user should see Steve Jobs on the main header
 
-  @wikipedia
   Scenario: Wikipedia Search image verification
     Given user is on the wikipedia main page
     When user searches for Steve Jobs
     And user clicks search button
     Then user should see Steve Jobs on the image
+
+  @wikipedia
+  Scenario: Wikipedia Search header verification
+    Given user is on the wikipedia main page
+    When user searches for "Steve Jobs"
+    And user clicks search button
+    Then user should see "Steve Jobs" on the main header
